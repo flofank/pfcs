@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;First&apos;&#x0D;&#x0A;- Original project: &apos;HelloWorld&apos;&#x0D;&#x0A;- Destination element: &apos;First&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jogl-all.jar&#x0D;&#x0A;     gluegen-rt-natives-windows-amd64.jar&#x0D;&#x0A;     jogl-all-natives-windows-amd64.jar&#x0D;&#x0A;     gluegen.jar&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="=First" element1="jogl-all.jar" element2="gluegen-rt-natives-windows-amd64.jar" element3="jogl-all-natives-windows-amd64.jar" element4="gluegen.jar" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1410950503340" units="0" version="1.0"/>
+</session>
