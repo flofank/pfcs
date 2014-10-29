@@ -1,0 +1,14 @@
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
+
+
+public abstract class Dynamics {
+	private long keyTimeOut;
+	
+	double[] euler(double[] x, double dt) {
+		double[] y = f(x);
+	}
+	
+	abstract double f(double[] x);
+}

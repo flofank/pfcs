@@ -43,7 +43,7 @@ public class MyStandardBoard implements WindowListener, GLEventListener {
 		GL2 gl = gl0.getGL2();
 		// Set Clear Color
 		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        FPSAnimator anim = new FPSAnimator(canvas, 1000, true);
+        FPSAnimator anim = new FPSAnimator(canvas, 200, true);
         anim.start();
 	}
 

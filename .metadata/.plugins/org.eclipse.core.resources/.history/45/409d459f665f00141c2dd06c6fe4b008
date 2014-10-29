@@ -1,0 +1,26 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
+
+
+public class Dynamics extends MyStandardBoard {
+	private long keyTimeOut;
+	
+	public static void main(String[] args) {
+		new Parking();
+	}
+	
+	public Parking() {
+		super(800, 1200, -20, 100, -20, true);
+	}
+	
+	@Override
+	public void display(GLAutoDrawable drawable) {
+		super.display(drawable);
+		GL gl0 = drawable.getGL();
+		GL2 gl = gl0.getGL2();
+	}
+}

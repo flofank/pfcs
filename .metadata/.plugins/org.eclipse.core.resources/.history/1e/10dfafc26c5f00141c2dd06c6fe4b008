@@ -1,0 +1,30 @@
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
+
+
+public class Kreisbeweg extends MyStandardBoard {
+
+	static class Kreisbahn extends Dynamics {
+		@Override
+		double[] f(double[] x) {
+			double[] y = {-x[1], x[0]}; 
+			return y;
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		Kreisbeweg kb = new Kreisbeweg();
+	}
+	
+	public Kreisbeweg() {
+		super(400, 400, -10, 10, -10, true);
+	}
+	
+	public void display(GLAutoDrawable gl) {
+		super.display(gl);
+	}
+	
+	
+
+}

@@ -1,0 +1,89 @@
+
+import javax.media.opengl.GL2;
+
+
+public class Car {
+	private long m_lastMove;
+	private double m_x;
+	private double m_y;
+	private double m_v;
+	private double m_length;
+	private double m_width;
+	private double m_axleDist;
+	private double m_rotation;
+	private double m_steer;
+	
+	public Car() {
+		m_x = 20;
+		m_y = 20;
+		m_v = 0.001;
+		m_length = 4.5;
+		m_width = 1.8;
+		m_axleDist = 0.8;
+		m_rotation = 20;
+		m_steer = 0;
+	}
+	
+	public void move() {
+		if (m_lastMove == 0) {
+			m_lastMove = System.currentTimeMillis();
+		}
+		long dt = System.currentTimeMillis() - m_lastMove;
+		m_lastMove += dt;
+		if (m_steer == 0) {
+            m_x += m_v * Math.sin(m_rotation) * dt;
+            m_y += m_v * Math.cos(m_rotation) * dt;
+		} else {
+			double ym = m_width / 2 + m_axleDist / Math.tan(m_steer);
+            double deltaPhi = m_v * dt / ym;
+
+            m_x += ym * (Math.sin(m_rotation + deltaPhi) - Math.sin(m_rotation));
+            m_y -= ym * (Math.cos(m_rotation + deltaPhi) - Math.cos(m_rotation));
+
+            m_rotation = (m_rotation + Math.toDegrees(deltaPhi)) % 360;
+		}
+	}
+	
+	public void display(GL2 gl) {
+		// Move
+		gl.glMatrixMode(GL2.GL_MODELVIEW);
+		gl.glTranslated(m_x, m_y, 0);
+		gl.glRotated(m_rotation, 0, 0, 1);
+		// Draw
+		drawBody(gl);
+		drawWheel(gl, 0, m_width / 2, 0); 
+		drawWheel(gl, 0, - m_width / 2, 0);
+		drawWheel(gl, m_length - m_axleDist * 2, m_width / 2, m_steer);
+		double ym = m_width / 2 + m_axleDist / Math.tan(m_steer);
+		double steerRight = Math.atan(m_axleDist / (ym + m_width / 2));
+		drawWheel(gl, m_length - m_axleDist * 2, - m_width / 2, steerRight);
+		gl.glLoadIdentity();
+	}
+	
+	private void drawBody(GL2 gl) {
+		gl.glColor3d(1, 1, 0);
+		gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glVertex2d(-m_axleDist, - m_width / 2);
+		gl.glVertex2d(-m_axleDist, m_width / 2);
+		gl.glVertex2d(m_length - m_axleDist, m_width / 2);
+		gl.glVertex2d(m_length -m_axleDist, - m_width / 2);
+		gl.glEnd();
+	}
+	
+	private void drawWheel(GL2 gl, double x, double y, double s) {
+        gl.glPushMatrix();
+		gl.glColor3d(0.8, 0.8, 0.8);
+		gl.glTranslated(x, y, 0);
+		gl.glRotated(m_rotation, 0, 0, s);
+		gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glVertex2d(- m_length / 10, - m_width / 10);
+		gl.glVertex2d(- m_length / 10, m_width / 10);
+		gl.glVertex2d(m_length / 10, m_width / 10);
+		gl.glVertex2d(m_length / 10, - m_width / 10);
+		gl.glEnd();
+        gl.glPopMatrix();
+	}
+	
+}

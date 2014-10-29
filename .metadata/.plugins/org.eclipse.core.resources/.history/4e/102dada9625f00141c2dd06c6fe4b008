@@ -1,0 +1,65 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
+
+
+public class Parking extends MyStandardBoard implements KeyListener{
+	private Car m_car;
+	
+	public static void main(String[] args) {
+		new Parking();
+	}
+	
+	public Parking() {
+		super(800, 1200, -20, 100, -20, true);
+		m_car = new Car();
+	}
+	
+	@Override
+	public void display(GLAutoDrawable drawable) {
+		super.display(drawable);
+		GL gl0 = drawable.getGL();
+		GL2 gl = gl0.getGL2();
+		m_car.move();
+		m_car.display(gl);
+		addKeyListener(this);
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_UP:
+			m_car.accelerate();
+			break;
+		case KeyEvent.VK_DOWN:
+			m_car.decelerate();
+			break;
+		case KeyEvent.VK_RIGHT:
+			m_car.turnRight();
+			break;
+		case KeyEvent.VK_LEFT:
+			m_car.turnLeft();
+			break;
+		case KeyEvent.VK_SPACE:
+			m_car.fullStop();
+			break;
+		default:
+			break;
+		}
+		System.out.println("Key pressed");
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		System.out.println("Key typed");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		System.out.println("Key Released");
+	}
+
+}

@@ -1,0 +1,22 @@
+
+public class Kreisbeweg extends MyStandardBoard {
+
+	static class Kreisbahn extends Dynamics {
+		
+	}
+	
+	public static void main(String[] args) {
+		Kreisbeweg kb = new Kreisbeweg();
+	}
+	
+	public Kreisbeweg() {
+		super(400, 400, -10, 10, -10, true);
+	}
+	
+	public void display(GL2 gl) {
+		
+	}
+	
+	
+
+}

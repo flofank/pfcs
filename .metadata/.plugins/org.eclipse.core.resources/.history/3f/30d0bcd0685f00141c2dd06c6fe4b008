@@ -1,0 +1,14 @@
+
+public class Kreisbeweg extends MyStandardBoard {
+
+	public static void main(String[] args) {
+		Kreisbeweg kb = new Kreisbeweg();
+	}
+	
+	public Kreisbeweg() {
+		super(20, 20, -10, 10, -10, true);
+	}
+	
+	
+
+}

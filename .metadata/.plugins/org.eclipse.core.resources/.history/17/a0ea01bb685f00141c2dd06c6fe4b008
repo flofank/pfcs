@@ -1,0 +1,8 @@
+
+public class Kreisbeweg extends MyStandardBoard {
+
+	public Kreisbeweg() {
+		super(20, 20, -10, 10, -10, true);
+	}
+
+}

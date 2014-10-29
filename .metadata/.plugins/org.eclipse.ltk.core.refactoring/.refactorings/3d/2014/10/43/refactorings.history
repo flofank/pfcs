@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;Cars&apos;&#x0D;&#x0A;- Original project: &apos;3d&apos;&#x0D;&#x0A;- Destination element: &apos;Cars&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     gluegen-rt-natives-windows-amd64.jar&#x0D;&#x0A;     jogl-all-natives-windows-amd64.jar&#x0D;&#x0A;     gluegen.jar&#x0D;&#x0A;     jogl-all.jar" description="Copy files" destination="=Cars" element1="gluegen-rt-natives-windows-amd64.jar" element2="jogl-all-natives-windows-amd64.jar" element3="gluegen.jar" element4="jogl-all.jar" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1413975498310" units="0" version="1.0"/>
+</session>

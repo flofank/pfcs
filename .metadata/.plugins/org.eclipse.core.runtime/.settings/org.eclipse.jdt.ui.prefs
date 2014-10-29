@@ -1,3 +1,4 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="com.jogamp.opengl.util.AnimatorBase"><rhs name\="com.jogamp.opengl.util.FPSAnimator"/></lhs><lhs name\="javax.media.opengl.GLAnimatorControl"><rhs name\="com.jogamp.opengl.util.FPSAnimator"/></lhs><lhs name\="javax.media.opengl.FPSCounter"><rhs name\="com.jogamp.opengl.util.FPSAnimator"/></lhs><lhs name\="com.jogamp.opengl.util.FPSAnimator"><rhs name\="com.jogamp.opengl.util.FPSAnimator"/></lhs><lhs name\="KetteV2"><rhs name\="KetteV2"/></lhs><lhs name\="MyStandardBoard"><rhs name\="Kette"/></lhs><lhs name\="java.awt.event.WindowListener"><rhs name\="Kette"/></lhs><lhs name\="javax.media.opengl.GLEventListener"><rhs name\="Kette"/></lhs><lhs name\="java.util.EventListener"><rhs name\="Kette"/></lhs><lhs name\="Kette"><rhs name\="Kette"/></lhs><lhs name\="java.awt.geom.Point2D"><rhs name\="java.awt.Point"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="java.awt.Point"/></lhs><lhs name\="java.awt.Point"><rhs name\="java.awt.Point"/></lhs><lhs name\="Car"><rhs name\="Car"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs></history>
 content_assist_number_of_computers=13
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
@@ -6,6 +7,8 @@ fontPropagated=true
 org.eclipse.jdt.ui.editor.tab.width=
 org.eclipse.jdt.ui.formatterprofiles.version=12
 org.eclipse.jdt.ui.javadoclocations.migrated=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
 org.eclipse.jface.textfont=1|Consolas|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Consolas;
