@@ -1,0 +1,135 @@
+//  -------------    JOGL SampleProgram  (Pyramide) ------------
+//
+//     Darstellung einer Pyramide mit Kamera- und Objekt-System
+//
+import javax.media.opengl.*;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.media.opengl.awt.GLCanvas;
+
+import com.jogamp.opengl.util.FPSAnimator;
+
+public class MyStandardBoard implements WindowListener, GLEventListener {
+	GLCanvas canvas; // OpenGl-Canvas
+	double left, right;
+	double bottom, top;
+	double near = -100, far = 100; // Clipping Bereich
+	double elev = 14;
+	double azim = 40;
+	double dist = 4;
+	boolean grid = true;
+
+	// ------------------ Methoden --------------------
+
+
+	public MyStandardBoard(int wHeight, int wWidth, double minX, double maxX, double minY) // Konstruktor
+	{
+		this.grid = grid;
+		left = minX;
+		right = maxX;
+		bottom = minY;
+		Frame f = new Frame("Window");
+		canvas = new GLCanvas(); // OpenGL-Window
+		f.setSize(wWidth, wHeight);
+		f.setBackground(Color.gray);
+		f.addWindowListener(this);
+		canvas.addGLEventListener(this);
+		f.add(canvas);
+		f.setVisible(true);
+	}
+	
+	public MyStandardBoard(int wHeight, int wWidth, double minX, double maxX, double minY, boolean grid) {
+		this(wHeight, wWidth, minX, maxX, minY);
+		this.grid = grid;
+	}
+
+	public void init(GLAutoDrawable drawable) {
+		GL gl0 = drawable.getGL();
+		GL2 gl = gl0.getGL2();
+		// Set Clear Color
+		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        FPSAnimator anim = new FPSAnimator(canvas, 200, true);
+        anim.start();
+	}
+
+	public void display(GLAutoDrawable drawable) {
+		GL gl0 = drawable.getGL();
+		GL2 gl = gl0.getGL2();
+		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+		if (grid) {
+			zeichneAchsen(gl);
+		}
+	}
+
+	public void reshape(GLAutoDrawable drawable, // Window resized
+			int x, int y, int width, int height) {
+		GL gl0 = drawable.getGL();
+		GL2 gl = gl0.getGL2();
+		gl.glViewport(0, 0, width, height);
+		double aspect = (float) height / width; // aspect-ratio
+		top = aspect * (right - left) + bottom;
+		gl.glMatrixMode(gl.GL_PROJECTION);
+		gl.glLoadIdentity();
+		// Koordinatenbereich definieren
+		gl.glOrtho(left, right, bottom, top, near, far); 
+	}
+
+	public void dispose(GLAutoDrawable drawable) {}
+
+	void zeichneAchsen(GL2 gl) // Koordinatenachsen zeichnen
+	{
+		gl.glColor3d(0.3, 0.3, 0.3);
+		gl.glPolygonMode(gl.GL_FRONT_AND_BACK, gl.GL_LINE);
+		double x = 0;
+		while (x < right || x < -left) {
+			x += 1;
+			drawLineVertical(gl, x);
+			drawLineVertical(gl, -x);
+		}
+		double y = 0;
+		while (y < top || y < -bottom) {
+			y += 1;
+			drawLineHorizontal(gl, y);
+			drawLineHorizontal(gl, -y);
+		}
+		gl.glColor3d(1, 1, 1);
+		gl.glBegin(GL2.GL_LINES);
+		gl.glVertex3d(0, bottom, 0);
+		gl.glVertex3d(0, top, 0);
+		gl.glEnd();
+		gl.glBegin(GL2.GL_LINES);
+		gl.glVertex3d(left, 0, 0);
+		gl.glVertex3d(right, 0, 0);
+		gl.glEnd();
+	}
+	
+	public void drawLineHorizontal(GL2 gl, double y) {
+		gl.glBegin(GL2.GL_LINES);
+		gl.glVertex3d(left, y, 0);
+		gl.glVertex3d(right, y, 0);
+		gl.glEnd();
+	}
+	
+	public void drawLineVertical(GL2 gl, double x) {
+		gl.glBegin(GL2.GL_LINES);
+		gl.glVertex3d(x, bottom, 0);
+		gl.glVertex3d(x, top, 0);
+		gl.glEnd();
+	}
+	
+
+	// --------- Window-Events --------------------
+
+	public void windowClosing(WindowEvent e) {
+		System.exit(0);
+	}
+	public void windowActivated(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {}
+
+}

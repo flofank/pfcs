@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MyStandardBoard.java&apos; to &apos;Planet/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;ParkMe&apos;&#x0D;&#x0A;- Destination element: &apos;Planet/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;MyStandardBoard.java&apos;" description="Copy compilation unit" destination="=Planet/src&lt;" element1="/src&lt;{MyStandardBoard.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1413369955251" units="1" version="1.0"/>
+</session>
